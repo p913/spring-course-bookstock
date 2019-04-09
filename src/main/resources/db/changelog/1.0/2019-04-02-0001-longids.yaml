@@ -1,0 +1,76 @@
+databaseChangeLog:
+- changeSet:
+    id: 2019-04-02-0001-longid-author
+    author: peter
+    changes:
+    - modifyDataType:
+        columnName: author_id
+        newDataType: bigint
+        schemaName: public
+        tableName: authors
+    - modifyDataType:
+        columnName: author_id
+        newDataType: bigint
+        schemaName: public
+        tableName: books
+- changeSet:
+    #Для PostgreSQL изменение типа serial -> bigserial сохраняет sequence для столбца, а для H2 нет
+    #поэтому для тестов в H2 создаем identity явно
+    id: 2019-04-02-0001-longid-author-identity
+    author: peter
+    dbms: h2
+    changes:
+    - addAutoIncrement:
+        columnDataType: bigint
+        columnName: author_id
+        schemaName: public
+        startWith: 100
+        tableName: authors
+- changeSet:
+    id: 2019-04-02-0001-longid-genre
+    author: peter
+    changes:
+    - modifyDataType:
+        catalogName: bookstock
+        columnName: genre_id
+        newDataType: bigint
+        schemaName: public
+        tableName: genres
+    - modifyDataType:
+        catalogName: bookstock
+        columnName: genre_id
+        newDataType: bigint
+        schemaName: public
+        tableName: books
+- changeSet:
+    id: 2019-04-02-0001-longid-genre-identity
+    author: peter
+    dbms: h2
+    changes:
+    - addAutoIncrement:
+        columnDataType: bigint
+        columnName: genre_id
+        schemaName: public
+        startWith: 100
+        tableName: genres
+- changeSet:
+    id: 2019-04-02-0001-longid-book
+    author: peter
+    changes:
+    - modifyDataType:
+        catalogName: bookstock
+        columnName: book_id
+        newDataType: bigint
+        schemaName: public
+        tableName: books
+- changeSet:
+    id: 2019-04-02-0001-longid-book-identity
+    author: peter
+    dbms: h2
+    changes:
+    - addAutoIncrement:
+        columnDataType: bigint
+        columnName: book_id
+        schemaName: public
+        startWith: 100
+        tableName: books
