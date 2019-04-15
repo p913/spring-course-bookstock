@@ -1,0 +1,53 @@
+databaseChangeLog:
+- changeSet:
+    id: 0001-authors-test-data
+    author: peter
+    context: test
+    runOnChange: true
+    loadUpdateData:
+      primaryKey: author_id
+      file: csv/authors.csv
+      relativeToChangelogFile: true
+      quotchar: '"'
+      separator: ';'
+      encoding: UTF-8
+      tableName: authors
+- changeSet:
+    id: 0001-genres-test-data
+    author: peter
+    context: test
+    runOnChange: true
+    loadUpdateData:
+      primaryKey: genre_id
+      file: csv/genres.csv
+      relativeToChangelogFile: true
+      quotchar: '"'
+      separator: ';'
+      encoding: UTF-8
+      tableName: genres
+- changeSet:
+    id: 0001-books-test-data
+    author: peter
+    context: test
+    runOnChange: true
+    loadUpdateData:
+      primaryKey: book_id
+      file: csv/books.csv
+      relativeToChangelogFile: true
+      quotchar: '"'
+      separator: ';'
+      encoding: UTF-8
+      tableName: books
+- changeSet:
+    id: 0001-comments-test-data
+    author: peter
+    context: test
+    runOnChange: true
+    loadUpdateData:
+      primaryKey: comment_id
+      file: csv/comments.csv
+      relativeToChangelogFile: true
+      quotchar: '"'
+      separator: ';'
+      encoding: UTF-8
+      tableName: book_comments

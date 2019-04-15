@@ -1,0 +1,51 @@
+databaseChangeLog:
+- changeSet:
+    id: 2019-04-02-0002-table-comments
+    author: peter
+    changes:
+    - createTable:
+        tableName: book_comments
+        schemaName: public
+        columns:
+        - column:
+            name: comment_id
+            type: bigint
+            constraints:
+                nullable: false
+                primaryKey: true
+        - column:
+            name: book_id
+            type: bigint
+            constraints:
+              nullable: false
+              foreignKeyName: fk_comments_book_id
+              references: books(book_id)
+        - column:
+            name: comment
+            type: text
+            constraints:
+                nullable: false
+        - column:
+            name: post_date
+            type: timestamptz
+            constraints:
+                nullable: false
+        - column:
+            name: reader_name
+            type: varchar(255)
+            constraints:
+                nullable: false
+    - createIndex:
+        indexName: idx_book_comments_book
+        tableName: book_comments
+        schemaName: public
+        unique: false
+        columns:
+          - column:
+              name: book_id
+    - addAutoIncrement:
+        columnDataType: bigint
+        columnName: comment_id
+        schemaName: public
+        startWith: 4
+        tableName: book_comments
