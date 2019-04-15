@@ -1,0 +1,4 @@
+comment_id;book_id;comment;post_date;reader_name
+1;7;"I kill him!";"2019-04-07T13:00:00";"Dantes"
+2;7;"It's beautiful! Pushkin is my teacher!";"2019-04-07T14:00:00";"Lermontov"
+3;6;"I sleep on second page...";"2019-04-07T15:00:00";"Vasia Pupkin"
