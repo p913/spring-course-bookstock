@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Книжный склад</title>
+    <link rel="stylesheet" href="../static/bookstock.css" th:href="@{bookstock.css}">
+</head>
+<body>
+  <div class="central">
+      <h1>Книжный склад</h1>
+
+      <form class="search" th:action="@{/search}">
+          <input type="submit" value="Искать">
+          <div>
+              <input type="text" name="searchtext">
+          </div>​
+      </form>
+
+      <p th:if="${searchtext}" th:utext="|Результат поиска по запросу <b>'${searchtext}'</b>:|">Результат поиска:</p>
+
+      <ol class="books">
+          <li th:each="book: ${books}">
+              <a href="viewbook.html" th:href="@{/viewbook(id=${book.id})}" th:text="${book.title}">Название книги. Может быть весьма длинным</a><br>
+              <span th:text="${book.author.name}">Author</span>, <span th:text="${book.genre}">Жанр</span><br>
+              <span th:text="${book.publisher}">Издатель</span>, <span th:text="${book.year}">2019</span>
+          </li>
+      </ol>
+
+      <p><a href="editbook.html" th:href="@{/editbook}">Добавить</a> книгу</p>
+
+      <th:block th:replace="footer::about"/>
+  </div>
+</body>
+</html>

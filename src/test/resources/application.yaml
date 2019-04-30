@@ -1,0 +1,14 @@
+spring:
+  data:
+    mongodb:
+      database: bookstocktest
+      port: 0
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
