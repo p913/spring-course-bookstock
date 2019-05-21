@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование книги</title>
+    <script src="webjars/vue/2.5.16/vue.min.js"></script>
+    <script src="vuecomponents.js"></script>
+    <script src="editbook.js"></script>
+    <link rel="stylesheet" href="bookstock.css"/>
+</head>
+<body>
+<div class="central">
+    <h1 class="header-of-page">Добавить/изменить книгу</h1>
+
+    <section id="vue-container">
+        <edit-book-form v-bind:book="book" v-bind:pojoList="pojoList" v-bind:validation-errors="validationErrors" v-on:save="saveBook">
+        </edit-book-form>
+    </section>
+</div>
+</body>
+</html>
