@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подробнее о книге</title>
+    <script src="webjars/vue/2.5.16/vue.min.js"></script>
+    <script src="vuecomponents.js"></script>
+    <script src="viewbook.js"></script>
+    <link rel="stylesheet" href="bookstock.css"/>
+</head>
+<body>
+<div class="central">
+    <nav class="actions-buttons-nav">
+        <button id="nav-button-edit" class="actions-buttons-nav__item flat-text-button">Изменить</button>
+        <button id="nav-button-del" class="actions-buttons-nav__item flat-text-button">Удалить</button>
+        <button id="nav-button-home" class="actions-buttons-nav__item flat-text-button">Все книги</button>
+    </nav>
+
+    <section id="vue-container">
+      <book-full-view v-bind:book="book" v-on:del-comment="delComment"></book-full-view>
+
+      <add-comment-form v-on:new-comment="addComment"></add-comment-form>
+    </section>
+
+</div>
+</body>
+</html>
