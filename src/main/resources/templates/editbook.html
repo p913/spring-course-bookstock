@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Книга - редактирование</title>
+    <link rel="stylesheet" href="../static/bookstock.css" th:href="@{bookstock.css}">
+</head>
+<body>
+<div class="central">
+    <div class="header">
+        <a href="bookstock.html" th:href="@{/}">[На главную]</a>
+    </div>
+
+    <h1 th:text="${((#strings.isEmpty(book.id)) ? 'Добавить' : 'Изменить') + ' книгу'}">Добавить/изменить книгу</h1>
+
+    <p>
+    <form class="editentity" th:action="@{/savebook(id=${book.id})}" th:object="${book}" method="post">
+        <table>
+            <tr>
+                <th class="clmnfldname"></th>
+                <th class="clmnfldvalue"></th>
+            </tr>
+            <tr>
+                <td>Название:</td>
+                <td><input type="text" th:field="*{title}" required="true">
+                    <span class="fielderror" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Bad title</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Автор:</td>
+                <td><input type="search" list="authors" th:field="*{author.name}" required="true">
+                    <datalist id="authors">
+                        <option value="Пушкин А.С." th:each="author: ${authors}" th:value="${author.name}"></option>
+                    </datalist>
+                    <span class="fielderror" th:if="${#fields.hasErrors('author.name')}" th:errors="*{author.name}">Bad author</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Жанр:</td>
+                <td><input type="text" th:field="*{genre}" required="true">
+                    <span class="fielderror" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}">Bad genre</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Издательство:</td>
+                <td><input type="text" th:field="*{publisher}" required="true">
+                    <span class="fielderror" th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}">Bad publisher</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Год издания:</td>
+                <td><input type="number" th:field="*{year}" required="true">
+                    <span class="fielderror" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Bad year</span>
+                </td>
+            </tr>
+            <tr>
+                <td>ISBN:</td>
+                <td><input type="text" th:field="*{isbn}" required="true">
+                    <span class="fielderror" th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}">Bad ISBN</span>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Сохранить"></td>
+            </tr>
+        </table>
+    </form>
+
+    <th:block th:replace="footer::about"/>
+</div>
+</body>
+</html>
