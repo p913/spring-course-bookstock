@@ -1,0 +1,45 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${book.title}">Книга на складе</title>
+    <link rel="stylesheet" href="../static/bookstock.css" th:href="@{/bookstock.css}">
+</head>
+<body>
+<div class="central">
+    <th:block th:replace="header::user"/>
+
+    <div class="header">
+        <a sec:authorize="hasRole('ROLE_STOCK_KEEPER')" href="editbook.html" th:href="@{/editbook(id=${book.id})}">[Изменить]</a>
+        <a sec:authorize="hasRole('ROLE_STOCK_KEEPER')" href="editbook.html" th:href="@{/delbook(id=${book.id})}" onclick="return confirm('Действительно удалить?')">[Удалить]</a>
+        <a href="bookstock.html" th:href="@{/}">[На главную]</a>
+    </div>
+
+    <h1 th:text="${book.title}">Книга на складе</h1>
+
+    Автор: <span th:text="${book.author.name}">Author</span><br/>
+    Жанр: <span th:text="${book.genre.name}">Жанр</span><br/>
+    Издательство: <span th:text="${book.publisher}">Издатель</span><br/>
+    Год издания: <span th:text="${book.year}">2019</span><br/>
+    ISBN: <span th:text="${book.isbn}">56661234X</span>
+
+    <p th:unless="${comments.isEmpty()}">Отзывы читателей:</p>
+    <div th:each="comment: ${comments}" class="comment" th:with="commentdateFormat='HH:mm dd.MM.yyyy'">
+        <p>
+        <div class="commentinfo"><span class="commentreader" th:text="${comment.user.fullName}">Читатель</span>,
+            <span th:text="${#temporals.format(comment.date, commentdateFormat)}">2019-01-01 23:59:</span>
+            <a sec:authorize="hasRole('ROLE_STOCK_KEEPER')" th:href="@{/delcomment(bookid=${book.id}, commentid=${comment.id})}"
+               onclick="return confirm('Действительно удалить?')">[Удалить]</a>
+        </div>
+        <span th:text="${comment.text}" class="commenttext">Книгу не осилил, уснул на второй странице.</span></p>
+    </div>
+
+    <p>
+    <form sec:authorize="hasRole('ROLE_READER')" class="addcomment" th:action="@{/addcomment(bookid=${book.id})}" method="post">
+        <textarea name="text" placeholder="Ваш отзыв о книге..." required="true" rows="5"></textarea><br>
+        <input type="submit" value="Оставить отзыв">
+    </form>
+
+    <th:block th:replace="footer::about"/>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Зарегистрироваться</title>
+    <link rel="stylesheet" href="../static/bookstock.css" th:href="@{/bookstock.css}">
+</head>
+<body>
+<div class="central">
+    <div class="header">
+        <a href="index.html" th:href="@{/}">[На главную]</a>
+    </div>
+
+    <h1>Зарегистрироваться</h1>
+
+    <p>
+    <form class="editentity" th:action="@{/register}" th:object="${user}" method="post">
+        <table>
+            <tr>
+                <th class="clmnfldname"></th>
+                <th class="clmnfldvalue"></th>
+            </tr>
+            <tr>
+                <td><label>Login:</label></td>
+                <td><input type="text" th:field="*{login}" required>
+                    <span class="fielderror" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Bad login</span>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Пароль:</label></td>
+                <td><input type="password" th:field="*{password}" required>
+                    <span class="fielderror" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Bad password</span>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Полное имя:</label></td>
+                <td><input type="text" th:field="*{fullName}" required>
+                    <span class="fielderror" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">Bad full title</span>
+                </td>
+            </tr>
+            <tr>
+                <td><label>E-mail:</label></td>
+                <td><input type="text" th:field="*{email}" required>
+                    <span class="fielderror" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Bad email</span>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Хочу быть кладовщиком <input type="checkbox" th:field="*{stockKeeper}"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Сохранить"></td>
+            </tr>
+        </table>
+    </form>
+
+    <th:block th:replace="footer::about"/>
+</div>
+</body>
+</html>

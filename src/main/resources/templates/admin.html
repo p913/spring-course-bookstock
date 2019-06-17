@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Administration</title>
+    <link rel="stylesheet" href="../static/bookstock.css" th:href="@{/bookstock.css}">
+</head>
+<body>
+<div class="central">
+    <th:block th:replace="header::user"/>
+
+    <h1>Администрирование</h1>
+
+        <div th:each="obj: ${booksPermissions}" class="bookwithuserpermissions">
+            <table class="user-with-permissions">
+                <caption>
+                    <span class="book-caption-title" th:text="${obj.book.title + '.'}">Заголовок книги</span>
+                    <span class="book-caption-other" th:text="${obj.book.author.name + ', ' + obj.book.year + 'г. , ISBN:' + obj.book.isbn}">Реквизиты</span>
+                </caption>
+                <tr>
+                    <th class="principalcolumn">Пользователь</th>
+                    <th>Права</th>
+                </tr>
+                <tr th:each="usr: ${obj.userWithPermissionsList}">
+                    <td th:text="${usr.fullName} + ' с логином ' + ${usr.login} + ${usr.stockKeeper ? ', кладовщик': ''}">Пользователь</td>
+                    <td>
+                      <form th:action="@{/admin/permissionsforbook}" method="post">
+                          <input type="hidden" name="bookId" value="1" th:value="${obj.book.id}"/>
+                          <input type="hidden" name="userId" value="10" th:value="${usr.id}"/>
+
+                          <label>Смотреть и комментировать</label>
+                          <select name="read">
+                              <option th:value="GRANTED" th:selected="${usr.permReadAndComment.name() == 'GRANTED'}">Разрешить</option>
+                              <option th:value="REVOKED" th:selected="${usr.permReadAndComment.name() == 'REVOKED'}">Запретить</option>
+                              <option th:value="INHERITED" th:selected="${usr.permReadAndComment.name() == 'INHERITED'}">Как у роли</option>
+                          </select>
+
+                          <label>Изменять</label>
+                          <select name="write">
+                              <option th:value="GRANTED" th:selected="${usr.permModify.name() == 'GRANTED'}">Разрешить</option>
+                              <option th:value="REVOKED" th:selected="${usr.permModify.name() == 'REVOKED'}">Запретить</option>
+                              <option th:value="INHERITED" th:selected="${usr.permModify.name() == 'INHERITED'}">Как у роли</option>
+                          </select>
+
+                          <label>Удалять</label>
+                          <select name="delete">
+                              <option th:value="GRANTED" th:selected="${usr.permDelete.name() == 'GRANTED'}">Разрешить</option>
+                              <option th:value="REVOKED" th:selected="${usr.permDelete.name() == 'REVOKED'}">Запретить</option>
+                              <option th:value="INHERITED" th:selected="${usr.permDelete.name() == 'INHERITED'}">Как у роли</option>
+                          </select>
+
+                          <input type="submit" value="Применить"/>
+                      </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <p></p>
+        <table class="user-with-permissions">
+            <caption>
+                <span class="book-caption-title">Добавление новых книг</span>
+            </caption>
+            <tr>
+                <th class="principalcolumn">Пользователь</th>
+                <th>Права</th>
+            </tr>
+            <tr th:each="usr: ${newbookPermissions.userWithPermissionsList}">
+                <td th:text="${usr.fullName} + ' с логином ' + ${usr.login} + ${usr.stockKeeper ? ', кладовщик': ''}">Пользователь</td>
+                <td>
+                    <form th:action="@{/admin/permissionsfornew}" method="post">
+                        <input type="hidden" name="userId" value="10" th:value="${usr.id}"/>
+
+                        <label>Добавлять новые книги на склад</label>
+                        <select name="create">
+                            <option th:value="GRANTED" th:selected="${usr.permCreateNew.name() == 'GRANTED'}">Разрешить</option>
+                            <option th:value="REVOKED" th:selected="${usr.permCreateNew.name() == 'REVOKED'}">Запретить</option>
+                            <option th:value="INHERITED" th:selected="${usr.permCreateNew.name() == 'INHERITED'}">Как у роли</option>
+                        </select>
+
+                        <input type="submit" value="Применить"/>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+
+    <th:block th:replace="footer::about"/>
+</div>
+</body>
+</html>
