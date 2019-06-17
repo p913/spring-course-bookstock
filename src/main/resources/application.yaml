@@ -1,0 +1,19 @@
+spring:
+  datasource:
+     url: jdbc:postgresql://192.168.1.56:5432/bookstock
+     username: user1
+     password: jw8s0F4
+     initialization-mode: always
+     schema: classpath:schema.sql
+     data: classpath:data.sql
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        #format_sql: true

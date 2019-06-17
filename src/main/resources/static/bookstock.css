@@ -1,0 +1,181 @@
+body {
+  font-family: Tahoma, Sans-serif;
+  font-size: 0.8em;
+  color: #004f8c;
+}
+
+div.central {
+  width: 600px;
+  position: absolute;
+  left: 50%;
+  margin-left: -300px;
+  border-radius: 5px;
+  border: 1px solid #a5d8ff;
+  background-color: #eff8ff;
+  padding: 1em;
+}
+
+a:link {
+  text-decoration: none;
+  color: #0066b4;
+}
+
+a:visited {
+  color: #0066b4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #0066b4;
+}
+
+form.search {
+  width: 100%;
+}
+
+form.search input[type="submit"] {
+  float: right;
+}
+
+form.search div {
+  overflow: hidden;
+  padding-right: .5em;
+}
+
+form.search div input {
+  width: 100%;
+}
+
+ol.books {
+  padding-inline-start: 1em;
+}
+
+ol.books a {
+  font-weight: bold;
+  color: #004f8c;
+}
+
+ol.books > li {
+  margin-bottom: 1em;
+}
+
+form.addcomment {
+  width: 100%;
+}
+
+form.addcomment textarea {
+  width: 100%;
+}
+
+form.addcomment input[type="submit"] {
+  float: right;
+}
+
+div.commentinfo {
+  font-size: 0.8em;
+}
+
+.commenttext {
+   font-style: italic;
+}
+
+.commentreader {
+  font-weight: bold;
+}
+
+form.editentity {
+  width: 100%;
+}
+
+form.editentity table {
+  width: 100%;
+}
+
+form.editentity input[type="text"], form.editentity input[type="search"] {
+  width: 100%;
+}
+
+form.editentity th.clmnfldname {
+  width: 10%;
+}
+
+form.editentity th.clmnfldvalue {
+  width: 90%;
+}
+
+form.editentity .fielderror {
+  color: red;
+  font-size: 70%;
+}
+
+div.header {
+  text-align: right;
+}
+
+div.footer {
+  font-size: 70%
+}
+
+.errors {
+  color: red;
+}
+
+form.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form.login .errors {
+  color: red;
+}
+
+form.login label{
+  margin-bottom: 0.5em;
+}
+
+.loggeduser {
+    text-align: right;
+}
+
+.globalerror {
+  color: red;
+  font-size: 70%;
+}
+
+table.user-with-permissions {
+  border: 1px solid #a5d8ff;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.user-with-permissions .principalcolumn {
+  width: 20%;
+}
+
+table.user-with-permissions td, table.user-with-permissions th {
+  border: 1px solid #a5d8ff;
+  font-size: 80%;
+}
+
+table.user-with-permissions td input[type="submit"] {
+  font-size: 80%;
+}
+
+table.user-with-permissions td select {
+  font-size: 80%;
+}
+
+table.user-with-permissions caption {
+  text-align: left;
+}
+
+.bookwithuserpermissions {
+  margin-top: 1em;
+}
+
+table.user-with-permissions .book-caption-title {
+  font-weight: bold;
+}
+

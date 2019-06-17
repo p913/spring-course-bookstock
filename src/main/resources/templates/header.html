@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/bookstock.css" th:href="@{/bookstock.css}">
+</head>
+<body>
+    <div class="loggeduser" th:fragment="user">
+        <form id="logoutform" sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
+            Вы вошли как <span sec:authentication="name">Читатель</span>&nbsp;
+            <a href="#" onclick="document.querySelector('#logoutform').submit();">[Выйти]</a>
+        </form>
+    </div>
+</body>
+</html>
