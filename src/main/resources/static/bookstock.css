@@ -1,0 +1,157 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  font-size: small;
+  color: #004f8c;
+  line-height: 1.3;
+}
+
+a:link {
+  text-decoration: none;
+  color: #0066b4;
+}
+
+a:visited {
+  color: #0066b4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #0066b4;
+}
+
+.central {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  border: 1px solid #a5d8ff;
+  background-color: #eff8ff;
+  padding: 1em;
+}
+
+.book-short-view {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+.book-short-view__header-title {
+  font-weight: bold;
+}
+
+.book-full-view__header-title {
+  font-weight: bold;
+  font-size: 150%;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.book-full-view__item {
+  font-weight: 500;
+}
+
+.book-full-view__header_comments {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.book-comment-view {
+  border: 1px solid #a5d8ff;
+  padding: 3px 10px 3px 10px;
+  background-color: white;
+  margin-bottom: 3px;
+}
+
+.book-comment-view__header {
+  font-size: 80%;
+}
+
+.book-comment-view__reader, .book-comment-view__date  {
+  font-weight: bold;
+}
+
+.book-comment-view__del-button {
+  float: right;
+}
+
+.add-comment-form {
+  padding-top: 1em;
+  width: 100%;
+}
+
+.add-comment-form__text {
+  width: 100%;
+}
+
+.add-comment-form__text, .add-comment-form__name {
+  border: 1px solid #a5d8ff;
+  margin-bottom: 3px;
+}
+
+.header-of-page {
+  font-size: 150%;
+  font-weight: bold;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.flat-text-button {
+  background-color: #a5d8ff;
+  border-color: #a5d8ff;
+  border-style: solid;
+  color: #004f8c;
+  border-radius: 3px;
+}
+
+.flat-text-button--small {
+  border: none;
+  font-size: x-small;
+  border-radius: 2px;
+}
+
+.search-form {
+  display: flex;
+  padding-bottom: 1em;
+}
+
+.search-form__text {
+  width: 100%;
+}
+
+.search-form__submit {
+  margin-left: 3px;
+}
+
+.edit-book-form {
+  display: table;
+  width: 100%;
+  border-spacing: 3px;
+}
+
+.edit-book-form__row {
+  display: table-row;
+}
+
+.edit-book-form__label, .edit-book-form__submit, .edit-book-form__input-year {
+  display: table-cell;
+}
+
+.edit-book-form__input-author, .edit-book-form__input-title, .edit-book-form__input-genre, .edit-book-form__input-publisher, .edit-book-form__input-isbn {
+  display: table-cell;
+  width: 100%;
+}
+
+.validation-error-field, .validation-error-global {
+  font-size: x-small;
+  color: red;
+}
+
+.actions-buttons-nav {
+  display: flex;
+  justify-content: flex-end;
+  float: right;
+}
+
+.actions-buttons-nav__item {
+  margin-left: 3px;
+}
+
