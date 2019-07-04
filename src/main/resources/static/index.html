@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="webjars/vue/2.5.16/vue.min.js"></script>
+    <script src="vuecomponents.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="bookstock.css"/>
+    <title>Книжный склад</title>
+</head>
+<body>
+<div class="central">
+    <nav class="actions-buttons-nav">
+        <button id="nav-button-show-all" class="actions-buttons-nav__item flat-text-button">Все книги</button>
+        <button id="nav-button-new-book" class="actions-buttons-nav__item flat-text-button">Новая</button>
+    </nav>
+
+    <h1 class="header-of-page">Книжный склад</h1>
+
+    <section id="vue-container" class="books">
+      <search-form v-on:search="search">
+      </search-form>
+
+      <book-short-view v-for="book in books" v-bind:book="book" url-details="viewbook.html?id=__id" v-bind:key="book.id">
+      </book-short-view>
+
+
+    </section>
+
+</div>
+</body>
+</html>
