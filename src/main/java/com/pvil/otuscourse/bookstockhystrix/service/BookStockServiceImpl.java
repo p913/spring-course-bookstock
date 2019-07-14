@@ -63,7 +63,7 @@ public class BookStockServiceImpl implements BookStockService {
         return bookRepository.findByAnythingContainsExcludeComments(searchText);
     }
 
-    private List<Book> getContainsAnyOfFallback() {
+    private List<Book> getContainsAnyOfFallback(String searchText) {
         return Collections.EMPTY_LIST;
     }
 
