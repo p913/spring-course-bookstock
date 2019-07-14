@@ -1,0 +1,43 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${book.title}">Книга на складе</title>
+    <link rel="stylesheet" href="../static/bookstock.css" th:href="@{bookstock.css}">
+</head>
+<body>
+<div class="central">
+    <div class="header">
+        <a href="editbook.html" th:href="@{/editbook(id=${book.id})}">[Изменить]</a>
+        <a href="editbook.html" th:href="@{/delbook(id=${book.id})}" onclick="return confirm('Действительно удалить?')">[Удалить]</a>
+        <a href="bookstock.html" th:href="@{/}">[На главную]</a>
+    </div>
+
+    <h1 th:text="${book.title}">Книга на складе</h1>
+
+    Автор: <span th:text="${book.author.name}">Author</span><br/>
+    Жанр: <span th:text="${book.genre}">Жанр</span><br/>
+    Издательство: <span th:text="${book.publisher}">Издатель</span><br/>
+    Год издания: <span th:text="${book.year}">2019</span><br/>
+    ISBN: <span th:text="${book.isbn}">56661234X</span>
+
+    <p th:unless="${book.comments.isEmpty()}">Отзывы читателей:</p>
+    <div th:each="comment: ${book.comments}" class="comment" th:with="commentdateFormat='HH:mm dd.MM.yyyy'">
+        <p>
+        <div class="commentinfo"><span class="commentreader" th:text="${comment.reader}">Читатель</span>,
+            <span th:text="${#dates.format(comment.date, commentdateFormat)}">2019-01-01 23:59:</span>
+            <a th:href="@{/delcomment(bookid=${book.id}, commentid=${comment.id})}" onclick="return confirm('Действительно удалить?')">[Удалить]</a>
+        </div>
+        <span th:text="${comment.text}" class="commenttext">Книгу не осилил, уснул на второй странице.</span></p>
+    </div>
+
+    <p>
+    <form class="addcomment" th:action="@{/addcomment(bookid=${book.id})}" method="post">
+        <input type="text" name="reader" placeholder="Ваше имя..." required="true"><br>
+        <textarea name="text" placeholder="Ваш отзыв о книге..." required="true" rows="5"></textarea><br>
+        <input type="submit" value="Оставить отзыв">
+    </form>
+
+    <th:block th:replace="footer::about"/>
+</div>
+</body>
+</html>

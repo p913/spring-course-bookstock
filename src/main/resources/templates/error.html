@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ошибка</title>
+    <link rel="stylesheet" href="../static/bookstock.css" th:href="@{bookstock.css}">
+</head>
+<body>
+    <div class="central">
+        <h1>Упппссс...</h1>
+        <p>
+        Что-то пошло не так...
+        <p>
+        Вернуться на <a href="bookstock.html" th:href="@{/}">главную</a> страницу.
+
+        <th:block th:replace="footer::about"/>
+    </div>
+
+</body>
+</html>
